@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    @apply text-sm leading-normal;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .sidebar-nav-item {
+    @apply w-full flex items-center space-x-2 px-4 py-2 text-left text-sm hover:bg-white/10 transition;
+  }
+
+  .sidebar-nav-item.active {
+    @apply bg-white/20 border-r-2 border-white;
+  }
+
+  .stats-card {
+    @apply bg-white rounded-md p-3 border border-gray-200 shadow-sm;
+  }
+
+  .form-input {
+    @apply px-2 py-1 border border-gray-300 rounded-md text-xs focus:ring-1 focus:ring-purple-500;
+  }
+
+  .data-table {
+    @apply w-full divide-y divide-gray-100 text-xs;
+  }
+
+  .data-table th {
+    @apply px-3 py-2 text-left font-semibold text-gray-500 uppercase;
+  }
+
+  .data-table td {
+    @apply px-3 py-2 whitespace-nowrap text-gray-800;
+  }
+
+  .severity-badge {
+    @apply inline-flex px-1.5 py-0.5 text-xs font-medium rounded-full;
+  }
+
+  .severity-high {
+    @apply text-red-600 bg-red-100;
+  }
+
+  .severity-medium {
+    @apply text-yellow-600 bg-yellow-100;
+  }
+
+  .severity-low {
+    @apply text-green-600 bg-green-100;
+  }
+}
+
+@layer utilities {
+  .gradient-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  .chart-bar {
+    animation: growUp 0.3s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes growUp {
+  from { transform: scaleY(0); transform-origin: bottom; }
+  to { transform: scaleY(1); transform-origin: bottom; }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 180px !important;
+  }
+
+  .main-content {
+    padding: 1rem !important;
+    overflow-y: auto;
+  }
+
+  .stats-card {
+    padding: 0.75rem !important;
+  }
+}
+
+@media print {
+  .sidebar, .no-print {
+    display: none !important;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
